@@ -5,7 +5,7 @@ package renfe.trains.model;
  * @author Diego Pino <dpino@igalia.com>
  *
  */
-public class Train {
+public class TrainItem {
 
 	private String code;
 
@@ -15,7 +15,7 @@ public class Train {
 
 	private String length;
 
-	public Train(String code, String departure, String arrive, String length) {
+	public TrainItem(String code, String departure, String arrive, String length) {
 		this.code = code;
 		this.departure = departure;
 		this.arrive = arrive;

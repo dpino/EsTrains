@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import renfe.trains.model.Train;
+import renfe.trains.model.TrainItem;
 import renfe.trains.services.RenfeXHR;
 import renfe.trains.views.TrainAdapterView;
 import android.app.ListActivity;
@@ -32,16 +32,16 @@ public class ListTrainResults extends ListActivity {
 		params.put("date", "tomorrow");
 		xhr.execute(params);
 
-		List<Train> trains = getTrains();
+		List<TrainItem> trains = getTrains();
 		TrainAdapter adapter = new TrainAdapter(this, trains);
 		setListAdapter(adapter);
 	}
 
-	private List<Train> getTrains() {
-		List<Train> result = new ArrayList<Train>();
-		result.add(new Train("12604 MD", "06.52", "08.44", "1.52"));
-		result.add(new Train("00280 ARCO", "09.25", "11.00", "1.35"));
-		result.add(new Train("12608 R", "14.47", "16.47", "2.00"));
+	private List<TrainItem> getTrains() {
+		List<TrainItem> result = new ArrayList<TrainItem>();
+		result.add(new TrainItem("12604 MD", "06.52", "08.44", "1.52"));
+		result.add(new TrainItem("00280 ARCO", "09.25", "11.00", "1.35"));
+		result.add(new TrainItem("12608 R", "14.47", "16.47", "2.00"));
 		return result;
 	}
 
@@ -49,9 +49,9 @@ public class ListTrainResults extends ListActivity {
 
 		private Context context;
 
-		private List<Train> trains;
+		private List<TrainItem> trains;
 
-		public TrainAdapter(Context context, List<Train> trains) {
+		public TrainAdapter(Context context, List<TrainItem> trains) {
 			this.context = context;
 			this.trains = trains;
 		}
@@ -69,7 +69,7 @@ public class ListTrainResults extends ListActivity {
 		}
 
 		public View getView(int position, View convertView, ViewGroup parent) {
-			Train train = trains.get(position);
+			TrainItem train = trains.get(position);
 			return new TrainAdapterView(this.context, train);
 		}
 

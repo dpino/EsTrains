@@ -1,6 +1,6 @@
 package renfe.trains.views;
 
-import renfe.trains.model.Train;
+import renfe.trains.model.TrainItem;
 import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,7 +12,7 @@ import android.widget.TextView;
  */
 public class TrainAdapterView extends LinearLayout {
 
-	public TrainAdapterView(Context context, Train train) {
+	public TrainAdapterView(Context context, TrainItem train) {
 		super(context);
 
 		this.setOrientation(HORIZONTAL);
