@@ -16,6 +16,11 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
+/**
+ *
+ * @author Diego Pino <dpino@igalia.com>
+ *
+ */
 public class RenfeTrainProvider extends ContentProvider {
 
 	public static final String TAG = "RenfeTrainProvider";

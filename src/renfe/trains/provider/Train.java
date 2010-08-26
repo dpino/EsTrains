@@ -3,6 +3,11 @@ package renfe.trains.provider;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+/**
+ *
+ * @author Diego Pino <dpino@igalia.com>
+ *
+ */
 public class Train implements BaseColumns {
 
 	public static final String AUTHORITY = "renfe.trains.provider";
