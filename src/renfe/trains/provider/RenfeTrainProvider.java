@@ -47,7 +47,11 @@ public class RenfeTrainProvider extends ContentProvider {
 
     private DatabaseHelper mOpenHelper;
 
-    private SQLiteDatabase mDB;
+    private static SQLiteDatabase mDB;
+
+    public static SQLiteDatabase getDB() {
+        return mDB;
+    }
 
     /**
      *

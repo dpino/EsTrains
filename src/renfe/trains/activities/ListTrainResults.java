@@ -10,6 +10,7 @@ import renfe.trains.views.TrainAdapterView;
 import android.app.ListActivity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +35,8 @@ public class ListTrainResults extends ListActivity {
         // xhr.execute(params);
 
         List<TrainItem> trains = getTrains();
-        testInsertTrain(trains.get(0));
+        // testInsertTrain(trains.get(0));
+        testListTrains();
         TrainAdapter adapter = new TrainAdapter(this, trains);
         setListAdapter(adapter);
     }
@@ -51,6 +53,14 @@ public class ListTrainResults extends ListActivity {
         values.put(Timetable.TRAIN_ID, 1);
 
         getContentResolver().insert(uri, values);
+    }
+
+    private void testListTrains() {
+        Uri uri = renfe.trains.provider.Timetable.CONTENT_URI;
+        String[] projection = { Timetable._ID, Timetable.CODE,
+                Timetable.ARRIVE, Timetable.DEPARTURE, Timetable.LENGTH };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        assert (cursor.getCount() > 0);
     }
 
     private List<TrainItem> getTrains() {
