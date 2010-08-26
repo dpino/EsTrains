@@ -1,16 +1,16 @@
 package renfe.trains.activities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import renfe.trains.R;
 import renfe.trains.model.TrainItem;
-import renfe.trains.services.RenfeXHR;
+import renfe.trains.provider.Timetable;
 import renfe.trains.views.TrainAdapterView;
 import android.app.ListActivity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,16 +26,31 @@ public class ListTrainResults extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        RenfeXHR xhr = new RenfeXHR();
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("origin", "vigo");
-        params.put("destination", "ourense");
-        params.put("date", "tomorrow");
-        xhr.execute(params);
+        // RenfeXHR xhr = new RenfeXHR();
+        // Map<String, String> params = new HashMap<String, String>();
+        // params.put("origin", "vigo");
+        // params.put("destination", "ourense");
+        // params.put("date", "tomorrow");
+        // xhr.execute(params);
 
         List<TrainItem> trains = getTrains();
+        testInsertTrain(trains.get(0));
         TrainAdapter adapter = new TrainAdapter(this, trains);
         setListAdapter(adapter);
+    }
+
+    private void testInsertTrain(TrainItem trainItem) {
+        Uri uri = renfe.trains.provider.Timetable.CONTENT_URI;
+
+        ContentValues values = new ContentValues();
+
+        values.put(Timetable.CODE, trainItem.getCode());
+        values.put(Timetable.ARRIVE, trainItem.getArrive());
+        values.put(Timetable.DEPARTURE, trainItem.getDeparture());
+        values.put(Timetable.LENGTH, trainItem.getLength());
+        values.put(Timetable.TRAIN_ID, 1);
+
+        getContentResolver().insert(uri, values);
     }
 
     private List<TrainItem> getTrains() {

@@ -12,7 +12,8 @@ public class Timetable implements BaseColumns {
 
     public static final String AUTHORITY = "renfe.trains.provider";
 
-    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
+            + "/timetables");
 
     public static final String DEFAULT_ORDER = "departure DESC";
 
