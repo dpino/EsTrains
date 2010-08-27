@@ -36,7 +36,7 @@ public class ListTrainResults extends ListActivity {
 
         List<TrainItem> trains = getTrains();
         // testInsertTrain(trains.get(0));
-        testListTrains();
+        testRemoveTrain(1);
         TrainAdapter adapter = new TrainAdapter(this, trains);
         setListAdapter(adapter);
     }
@@ -61,6 +61,12 @@ public class ListTrainResults extends ListActivity {
                 Timetable.ARRIVE, Timetable.DEPARTURE, Timetable.LENGTH };
         Cursor cursor = managedQuery(uri, projection, null, null, null);
         assert (cursor.getCount() > 0);
+    }
+
+    private void testRemoveTrain(Integer id) {
+        Uri uri = Uri.parse(renfe.trains.provider.Timetable.CONTENT_URI
+                .toString() + "/#");
+        getContentResolver().delete(uri, null, null);
     }
 
     private List<TrainItem> getTrains() {
