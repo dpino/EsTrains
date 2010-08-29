@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+android:id="@+id/widget43"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+<TextView android:id="@+id/txtDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Fecha"
+    android:layout_x="0px"
+    android:layout_y="0px" />
+
+<!-- Button today -->
+<Button android:id="@+id/btnToday"
+    android:onClick="today"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Hoy"
+	android:layout_x="2px"
+	android:layout_y="25px" />
+
+<!-- Button tomorrow -->
+<Button android:id="@+id/btnTomorrow"
+    android:onClick="tomorrow"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Mañana"
+	android:layout_x="138px"
+	android:layout_y="25px" />
+
+<!-- Button day after tomorrow -->
+<Button android:id="@+id/widget34"
+    android:onClick="dayAfterTomorrow"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Pasado"
+	android:layout_x="258px"
+	android:layout_y="25px" />
+
+<!-- Button back one day -->
+<Button android:id="@+id/btnBackMonth"
+    android:onClick="prevMonth"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&lt;"
+	android:layout_x="0px"
+	android:layout_y="82px" />
+
+<!-- Button back one month -->
+<Button android:id="@+id/btnBackDay"
+    android:onClick="prevDay"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&lt;&lt;"
+	android:layout_x="57px"
+	android:layout_y="82px" />
+
+<!-- Selected date -->
+<EditText android:id="@+id/selectedDate"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+	android:textSize="18sp"
+	android:width="125px"
+	android:layout_x="110px"
+	android:layout_y="82px" />
+
+<!-- Next day -->
+<Button android:id="@+id/btnNextDay"
+    android:onClick="nextDay"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="&gt;"
+    android:layout_x="235px"
+    android:layout_y="82px" />
+
+<!-- Next month -->
+<Button android:id="@+id/btnNextMonth"
+    android:onClick="nextMonth"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="&gt;&gt;"
+    android:layout_x="290px"
+    android:layout_y="82px" />
+
+<TextView android:id="@+id/txtOrigin"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Origen"
+	android:layout_x="5px"
+	android:layout_y="143px" />
+
+<AutoCompleteTextView android:id="@+id/acOrigin"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Origin"
+	android:textSize="18sp"
+	android:layout_x="2px"
+	android:layout_y="163px" />
+
+<TextView android:id="@+id/txtDestination"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Destino"
+	android:layout_x="4px"
+	android:layout_y="221px" />
+
+<AutoCompleteTextView android:id="@+id/acDestination"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Destination"
+	android:textSize="18sp"
+	android:layout_x="2px"
+	android:layout_y="240px" />
+
+<!-- Button search -->
+<Button android:id="@+id/btnSearch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Consultar horarios"
+    android:layout_x="115px"
+    android:layout_y="367px" />
+
+</AbsoluteLayout>
