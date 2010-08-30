@@ -27,13 +27,6 @@ public class ListTrainResults extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // RenfeXHR xhr = new RenfeXHR();
-        // Map<String, String> params = new HashMap<String, String>();
-        // params.put("origin", "vigo");
-        // params.put("destination", "ourense");
-        // params.put("date", "tomorrow");
-        // xhr.execute(params);
-
         List<TrainItem> trains = getTrains();
         // testInsertTrain(trains.get(0));
         testRemoveTrain(1);
