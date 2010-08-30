@@ -8,6 +8,8 @@ import renfe.trains.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 public class SearchTimetable extends Activity {
@@ -24,6 +26,10 @@ public class SearchTimetable extends Activity {
 
     private EditText txtSelectedDate;
 
+    private AutoCompleteTextView acDestination;
+
+    private AutoCompleteTextView acOrigin;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,30 @@ public class SearchTimetable extends Activity {
 
         txtSelectedDate = (EditText) findViewById(R.id.selectedDate);
         refreshSelectedDate();
+
+        initializeOrigins();
+        initializeDestinations();
+    }
+
+    private void initializeOrigins() {
+        acOrigin = (AutoCompleteTextView) findViewById(R.id.acOrigin);
+        feedAutocompleteTextView(acOrigin, getTrainStations());
+    }
+
+    private void initializeDestinations() {
+        acDestination = (AutoCompleteTextView) findViewById(R.id.acDestination);
+        feedAutocompleteTextView(acDestination, getTrainStations());
+    }
+
+    private String[] getTrainStations() {
+        return getResources().getStringArray(R.array.train_stations);
+    }
+
+    private void feedAutocompleteTextView(AutoCompleteTextView autocomplete,
+            String[] elements) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, elements);
+        autocomplete.setAdapter(adapter);
     }
 
     private void refreshSelectedDate() {
@@ -94,6 +124,10 @@ public class SearchTimetable extends Activity {
         c.setTime(date);
         c.add(Calendar.MONTH, -months);
         return c.getTime();
+    }
+
+    public void searchTrains(View v) {
+
     }
 
 }

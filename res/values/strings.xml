@@ -2,4 +2,129 @@
 <resources>
 	<string name="hello">Renfe trains</string>
 	<string name="app_name">Renfe trains</string>
+
+	<!-- Train stations -->
+    <string-array name="train_stations">
+        <item>A Coruña</item>
+        <item>La Coruña</item>
+        <item>Abrantes</item>
+        <item>Alicante</item>
+        <item>Alacant</item>
+        <item>Albacete</item>
+        <item>Alcazar de San Juan</item>
+        <item>Algeciras</item>
+        <item>Almeria</item>
+        <item>Antequera</item>
+        <item>Avila</item>
+        <item>Badajoz</item>
+        <item>Barcelona</item>
+        <item>Bardonecchia</item>
+        <item>Benicassim</item>
+        <item>Berna</item>
+        <item>Bern</item>
+        <item>Bilbao</item>
+        <item>Abando</item>
+        <item>Blois</item>
+        <item>Bobadilla</item>
+        <item>Burgos rosa de lima</item>
+        <item>Caceres</item>
+        <item>Cadiz</item>
+        <item>Calatayud</item>
+        <item>Cartagena</item>
+        <item>Castellon</item>
+        <item>Castello</item>
+        <item>Ciudad real</item>
+        <item>Cordoba</item>
+        <item>Cuenca</item>
+        <item>Elda</item>
+        <item>Petrer</item>
+        <item>Entroncamento</item>
+        <item>Ferrol</item>
+        <item>Figueres</item>
+        <item>Friburgo</item>
+        <item>Fribourg</item>
+        <item>Gasteiz</item>
+        <item>Gandia</item>
+        <item>Ginebra</item>
+        <item>Geneve</item>
+        <item>Gijon</item>
+        <item>Girona</item>
+        <item>Granada</item>
+        <item>Guadalajara</item>
+        <item>Hendaya</item>
+        <item>Huelva</item>
+        <item>Huesca</item>
+        <item>Irun</item>
+        <item>Jaen</item>
+        <item>Jerez de la frontera</item>
+        <item>Leon</item>
+        <item>Limoges</item>
+        <item>Linares</item>
+        <item>Baeza</item>
+        <item>Lisboa</item>
+        <item>Lleida</item>
+        <item>Logroño</item>
+        <item>Lorca</item>
+        <item>Sutullena</item>
+        <item>Lugo</item>
+        <item>Madrid</item>
+        <item>Malaga Maria Zambrano</item>
+        <item>Beira</item>
+        <item>Marvao</item>
+        <item>Medina del campo</item>
+        <item>Merida</item>
+        <item>Milan</item>
+        <item>Milano</item>
+        <item>Miranda de ebro</item>
+        <item>Monforte de lemos</item>
+        <item>Montpellier</item>
+        <item>Monzon</item>
+        <item>Rio cinca</item>
+        <item>Murcia</item>
+        <item>Navalmoral de la mata</item>
+        <item>Novara</item>
+        <item>Les Aubrais</item>
+        <item>Orleans</item>
+        <item>Oropesa</item>
+        <item>Orpesa</item>
+        <item>Ourense</item>
+        <item>Oviedo</item>
+        <item>Palencia</item>
+        <item>Pamplona</item>
+        <item>Iruña</item>
+        <item>Paris Austerlitz</item>
+        <item>Ponferrada</item>
+        <item>Pontevedra</item>
+        <item>Portbou</item>
+        <item>Puente genil</item>
+        <item>Puerto Santa Maria</item>
+        <item>Puertollano</item>
+        <item>Reus</item>
+        <item>Sahagun</item>
+        <item>Salamanca</item>
+        <item>San Fernando</item>
+        <item>Donostia</item>
+        <item>San Sebastian</item>
+        <item>Santander</item>
+        <item>Santiago de Compostela</item>
+        <item>Segovia</item>
+        <item>Sevilla</item>
+        <item>Soria</item>
+        <item>Tarragona</item>
+        <item>Teruel</item>
+        <item>Toledo</item>
+        <item>Torino</item>
+        <item>Turin</item>
+        <item>Tudela de Navarra</item>
+        <item>Valdepeñas</item>
+        <item>Valencia</item>
+        <item>Valladolid campo grande</item>
+        <item>Vigo</item>
+        <item>Villena</item>
+        <item>Vitoria</item>
+        <item>Xàtiva</item>
+        <item>Zamora</item>
+        <item>Zaragoza</item>
+        <item>Zurich</item>
+    </string-array>
 </resources>

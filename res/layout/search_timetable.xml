@@ -90,13 +90,14 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="Origen"
-	android:layout_x="5px"
+	android:layout_x="2px"
 	android:layout_y="143px" />
 
 <AutoCompleteTextView android:id="@+id/acOrigin"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:text="Origin"
+	android:width="300px"
+    android:singleLine="true"
 	android:textSize="18sp"
 	android:layout_x="2px"
 	android:layout_y="163px" />
@@ -105,19 +106,21 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="Destino"
-	android:layout_x="4px"
+	android:layout_x="2px"
 	android:layout_y="221px" />
 
 <AutoCompleteTextView android:id="@+id/acDestination"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:text="Destination"
-	android:textSize="18sp"
+	android:width="300px"
+	android:singleLine="true"
+    android:textSize="18sp"
 	android:layout_x="2px"
 	android:layout_y="240px" />
 
 <!-- Button search -->
 <Button android:id="@+id/btnSearch"
+    android:onClick="searchTrains"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Consultar horarios"
