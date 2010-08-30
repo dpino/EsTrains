@@ -1,125 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout
-android:id="@+id/widget43"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-xmlns:android="http://schemas.android.com/apk/res/android"
->
 
-<TextView android:id="@+id/txtDate"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Fecha"
-    android:layout_x="0px"
-    android:layout_y="0px" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-<!-- Button today -->
-<Button android:id="@+id/btnToday"
-    android:onClick="today"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="Hoy"
-	android:layout_x="2px"
-	android:layout_y="25px" />
+<TextView android:id="@+id/txtDate" android:layout_width="wrap_content"
+	android:layout_height="wrap_content" android:text="Fecha" />
 
-<!-- Button tomorrow -->
-<Button android:id="@+id/btnTomorrow"
-    android:onClick="tomorrow"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="Mañana"
-	android:layout_x="138px"
-	android:layout_y="25px" />
+<LinearLayout android:orientation="vertical"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:layout_weight="1">
 
-<!-- Button day after tomorrow -->
-<Button android:id="@+id/widget34"
-    android:onClick="dayAfterTomorrow"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="Pasado"
-	android:layout_x="258px"
-	android:layout_y="25px" />
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_weight="1">
 
-<!-- Button back one day -->
-<Button android:id="@+id/btnBackMonth"
-    android:onClick="prevMonth"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="&lt;"
-	android:layout_x="0px"
-	android:layout_y="82px" />
+		<!-- Button today -->
+		<Button android:id="@+id/btnToday" android:onClick="today"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:width="105px" android:text="Hoy" />
 
-<!-- Button back one month -->
-<Button android:id="@+id/btnBackDay"
-    android:onClick="prevDay"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="&lt;&lt;"
-	android:layout_x="57px"
-	android:layout_y="82px" />
+		<!-- Button tomorrow -->
+		<Button android:id="@+id/btnTomorrow" android:onClick="tomorrow"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:width="105px" android:text="Mañana" />
 
-<!-- Selected date -->
-<EditText android:id="@+id/selectedDate"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text=""
-	android:textSize="18sp"
-	android:width="125px"
-	android:layout_x="110px"
-	android:layout_y="82px" />
+		<!-- Button day after tomorrow -->
+		<Button android:id="@+id/widget34" android:onClick="dayAfterTomorrow"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="105px" android:text="Pasado" />
 
-<!-- Next day -->
-<Button android:id="@+id/btnNextDay"
-    android:onClick="nextDay"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="&gt;"
-    android:layout_x="235px"
-    android:layout_y="82px" />
+	</LinearLayout>
 
-<!-- Next month -->
-<Button android:id="@+id/btnNextMonth"
-    android:onClick="nextMonth"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="&gt;&gt;"
-    android:layout_x="290px"
-    android:layout_y="82px" />
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_weight="1">
+
+		<!-- Button back one day -->
+		<Button android:id="@+id/btnBackMonth" android:onClick="prevMonth"
+			android:width="50px" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:text="&lt;" />
+
+		<!-- Button back one month -->
+		<Button android:id="@+id/btnBackDay" android:onClick="prevDay"
+			android:width="50px" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:text="&lt;&lt;" />
+
+		<!-- Selected date -->
+		<EditText android:id="@+id/selectedDate"
+			android:layout_height="wrap_content" android:text=""
+			android:textSize="18sp" android:layout_width="wrap_content"
+			android:width="125px" />
+
+		<!-- Next day -->
+		<Button android:id="@+id/btnNextDay" android:onClick="nextDay"
+			android:width="50px" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:text="&gt;" />
+
+		<!-- Next month -->
+		<Button android:id="@+id/btnNextMonth" android:onClick="nextMonth"
+			android:width="50px" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="&gt;&gt;" />
+
+	</LinearLayout>
+
+</LinearLayout>
 
 <TextView android:id="@+id/txtOrigin"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:text="Origen"
-	android:layout_x="2px"
-	android:layout_y="143px" />
+	android:text="Origen" />
 
 <AutoCompleteTextView android:id="@+id/acOrigin"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:width="300px"
     android:singleLine="true"
-	android:textSize="18sp"
-	android:layout_x="2px"
-	android:layout_y="163px" />
+	android:textSize="18sp" />
 
 <TextView android:id="@+id/txtDestination"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:text="Destino"
-	android:layout_x="2px"
-	android:layout_y="221px" />
+	android:text="Destino" />
 
 <AutoCompleteTextView android:id="@+id/acDestination"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:width="300px"
 	android:singleLine="true"
-    android:textSize="18sp"
-	android:layout_x="2px"
-	android:layout_y="240px" />
+    android:textSize="18sp" />
 
 <!-- Button search -->
 <Button android:id="@+id/btnSearch"
+    android:layout_marginLeft="80px"
     android:onClick="searchTrains"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -127,4 +101,4 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_x="115px"
     android:layout_y="367px" />
 
-</AbsoluteLayout>
+</LinearLayout>
