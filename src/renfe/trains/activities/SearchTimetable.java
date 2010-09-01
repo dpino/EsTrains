@@ -3,14 +3,11 @@ package renfe.trains.activities;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import renfe.trains.R;
-import renfe.trains.services.RenfeXHR;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -21,9 +18,6 @@ public class SearchTimetable extends Activity {
     private static final String TAG = "SearchTimetable";
 
     private final SimpleDateFormat sdf = new SimpleDateFormat("E, d MMM");
-
-    private final SimpleDateFormat iso8601DateFormat = new SimpleDateFormat(
-            "yyyy-MM-dd");
 
     private final Calendar c = Calendar.getInstance();
 
@@ -134,33 +128,26 @@ public class SearchTimetable extends Activity {
     }
 
     public void searchTrains(View v) {
-        Editable origin = acOrigin.getText();
-        Editable destination = acDestination.getText();
+        String origin = acOrigin.getText().toString();
+        String destination = acDestination.getText().toString();
 
-        if (origin.toString().length() == 0) {
+        if (origin.length() == 0) {
             acOrigin.setError("Por favor, seleccione un origen");
             return;
         }
 
-        if (destination.toString().length() == 0) {
+        if (destination.length() == 0) {
             acDestination.setError("Por favor, seleccione un destino");
             return;
         }
 
-        searchTrains(origin.toString(), destination.toString(), selectedDate);
-    }
+        Intent intent = new Intent(this, ListTrainResults.class);
+        intent.putExtra("origin", origin);
+        intent.putExtra("destination", destination);
+        intent.putExtra("date", selectedDate);
+        startActivity(intent);
 
-    private void searchTrains(String origin, String destination, Date date) {
-        RenfeXHR xhr = new RenfeXHR();
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("origin", origin);
-        params.put("destination", destination);
-        params.put("date", toISO8601(date));
-        xhr.execute(params);
-    }
-
-    private String toISO8601(Date date) {
-        return iso8601DateFormat.format(date);
+        // searchTrains(origin, destination, selectedDate);
     }
 
 }
