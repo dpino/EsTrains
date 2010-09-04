@@ -93,12 +93,11 @@
 
 <!-- Button search -->
 <Button android:id="@+id/btnSearch"
-    android:layout_marginLeft="80px"
-    android:onClick="searchTrains"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:onClick="searchTrains"
     android:text="Consultar horarios"
-    android:layout_x="115px"
-    android:layout_y="367px" />
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
