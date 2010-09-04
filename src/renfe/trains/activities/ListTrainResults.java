@@ -2,6 +2,7 @@ package renfe.trains.activities;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,14 +14,10 @@ import org.json.JSONObject;
 
 import renfe.trains.R;
 import renfe.trains.model.TrainItem;
-import renfe.trains.provider.Timetable;
 import renfe.trains.services.RenfeXHR;
 import renfe.trains.views.TrainAdapterView;
 import android.app.ListActivity;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,16 +36,18 @@ public class ListTrainResults extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        // Set empty list
+        TrainAdapter adapter = new TrainAdapter(this, Collections.EMPTY_LIST);
+        setListAdapter(adapter);
+
+        // Get parameters
         Bundle parameters = getIntent().getExtras();
         String origin = (String) parameters.get("origin");
         String destination = (String) parameters.get("destination");
         Date date = (Date) parameters.get("date");
 
-        List<TrainItem> trains = getTrains();
-        TrainAdapter adapter = new TrainAdapter(this, trains);
-        setListAdapter(adapter);
-
-        trains = searchTrains(origin, destination, date);
+        // Do query
+        List<TrainItem> trains = searchTrains(origin, destination, date);
         adapter = new TrainAdapter(this, trains);
         setListAdapter(adapter);
     }
@@ -64,6 +63,7 @@ public class ListTrainResults extends ListActivity {
         params.put("date", toISO8601(date));
         params.put("output", "json");
         xhr.execute(params);
+
         result.addAll(parseTrainList(xhr.getResponseAsString()));
         return result;
     }
@@ -73,7 +73,7 @@ public class ListTrainResults extends ListActivity {
         try {
             JSONArray response = new JSONArray(json);
             for (int i = 0; i < response.length(); i++) {
-                JSONObject object = (JSONObject) response.get(i);
+                JSONObject object = response.getJSONObject(i);
                 TrainItem trainItem = new TrainItem();
                 trainItem.setCode(object.getString("code"));
                 trainItem.setArrive(object.getString("arrive"));
@@ -92,14 +92,11 @@ public class ListTrainResults extends ListActivity {
         return iso8601DateFormat.format(date);
     }
 
-    private List<TrainItem> getTrains() {
-        List<TrainItem> result = new ArrayList<TrainItem>();
-        // result.add(new TrainItem("12604 MD", "06.52", "08.44", "1.52"));
-        // result.add(new TrainItem("00280 ARCO", "09.25", "11.00", "1.35"));
-        // result.add(new TrainItem("12608 R", "14.47", "16.47", "2.00"));
-        return result;
-    }
-
+    /**
+     *
+     * @author Diego Pino <dpino@igalia.com>
+     *
+     */
     private class TrainAdapter extends BaseAdapter {
 
         private Context context;
@@ -126,38 +123,6 @@ public class ListTrainResults extends ListActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             TrainItem train = trains.get(position);
             return new TrainAdapterView(this.context, train);
-        }
-
-    }
-
-    private class TrainTests {
-
-        private void testInsertTrain(TrainItem trainItem) {
-            Uri uri = renfe.trains.provider.Timetable.CONTENT_URI;
-
-            ContentValues values = new ContentValues();
-
-            values.put(Timetable.CODE, trainItem.getCode());
-            values.put(Timetable.ARRIVE, trainItem.getArrive());
-            values.put(Timetable.DEPARTURE, trainItem.getDeparture());
-            values.put(Timetable.LENGTH, trainItem.getLength());
-            values.put(Timetable.TRAIN_ID, 1);
-
-            getContentResolver().insert(uri, values);
-        }
-
-        private void testListTrains() {
-            Uri uri = renfe.trains.provider.Timetable.CONTENT_URI;
-            String[] projection = { Timetable._ID, Timetable.CODE,
-                    Timetable.ARRIVE, Timetable.DEPARTURE, Timetable.LENGTH };
-            Cursor cursor = managedQuery(uri, projection, null, null, null);
-            assert (cursor.getCount() > 0);
-        }
-
-        private void testRemoveTrain(Integer id) {
-            Uri uri = Uri.parse(renfe.trains.provider.Timetable.CONTENT_URI
-                    .toString() + "/#");
-            getContentResolver().delete(uri, null, null);
         }
 
     }

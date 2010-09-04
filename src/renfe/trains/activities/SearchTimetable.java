@@ -146,8 +146,6 @@ public class SearchTimetable extends Activity {
         intent.putExtra("destination", destination);
         intent.putExtra("date", selectedDate);
         startActivity(intent);
-
-        // searchTrains(origin, destination, selectedDate);
     }
 
 }
