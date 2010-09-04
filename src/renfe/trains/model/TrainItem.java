@@ -1,5 +1,7 @@
 package renfe.trains.model;
 
+import android.database.Cursor;
+
 /**
  *
  * @author Diego Pino <dpino@igalia.com>
@@ -19,7 +21,12 @@ public class TrainItem {
 
     }
 
-    public TrainItem(String code, String departure, String arrive, String length) {
+    public TrainItem(Cursor cursor) {
+        this(cursor.getString(1), cursor.getString(2), cursor.getString(3),
+                cursor.getString(4));
+    }
+
+    public TrainItem(String code, String arrive, String departure, String length) {
         this.code = code;
         this.departure = departure;
         this.arrive = arrive;
