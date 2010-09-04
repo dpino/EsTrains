@@ -15,24 +15,36 @@ public class Train implements BaseColumns {
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
             + "/trains");
 
-    public static final String DEFAULT_ORDER = "date DESC";
+    public static final String DEFAULT_ORDER = "departure DESC";
 
     /**
      * <p>
      * </p>
      */
-    public static final String ORIGIN = "origin";
+    public static final String CODE = "code";
 
     /**
      * <p>
      * </p>
      */
-    public static final String DESTINATION = "destination";
+    public static final String ARRIVE = "arrive";
 
     /**
      * <p>
      * </p>
      */
-    public static final String DATE = "date";
+    public static final String DEPARTURE = "departure";
+
+    /**
+     * <p>
+     * </p>
+     */
+    public static final String LENGTH = "length";
+
+    /**
+     * <p>
+     * </p>
+     */
+    public static final String TIMETABLE_ID = "timetable_id";
 
 }

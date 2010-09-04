@@ -15,36 +15,24 @@ public class Timetable implements BaseColumns {
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
             + "/timetables");
 
-    public static final String DEFAULT_ORDER = "departure DESC";
+    public static final String DEFAULT_ORDER = "date DESC";
 
     /**
      * <p>
      * </p>
      */
-    public static final String CODE = "code";
+    public static final String ORIGIN = "origin";
 
     /**
      * <p>
      * </p>
      */
-    public static final String ARRIVE = "arrive";
+    public static final String DESTINATION = "destination";
 
     /**
      * <p>
      * </p>
      */
-    public static final String DEPARTURE = "departure";
-
-    /**
-     * <p>
-     * </p>
-     */
-    public static final String LENGTH = "length";
-
-    /**
-     * <p>
-     * </p>
-     */
-    public static final String TRAIN_ID = "train_id";
+    public static final String DATE = "date";
 
 }

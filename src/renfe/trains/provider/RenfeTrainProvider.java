@@ -64,17 +64,17 @@ public class RenfeTrainProvider extends ContentProvider {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
-        private void createTimetable(SQLiteDatabase db) {
-            String sql = "CREATE TABLE timetable ("
+        private void createTrain(SQLiteDatabase db) {
+            String sql = "CREATE TABLE train ("
                     + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "code TEXT NOT NULL, " + "departure TEXT NOT NULL, "
                     + "arrive TEXT NOT NULL, " + "length TEXT NOT NULL, "
-                    + "train_id INTEGER NOT NULL);";
+                    + "timetable_id INTEGER NOT NULL);";
             db.execSQL(sql);
         }
 
-        private void createTrain(SQLiteDatabase db) {
-            String sql = "CREATE TABLE train ("
+        private void createTimetable(SQLiteDatabase db) {
+            String sql = "CREATE TABLE timetable ("
                     + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "origin TEXT NOT NULL, " + "destination TEXT NOT NULL, "
                     + "date INTEGER NOT NULL);";
@@ -105,9 +105,6 @@ public class RenfeTrainProvider extends ContentProvider {
 
     @Override
     public String getType(Uri uri) {
-        // TODO Auto-generated method stub
-        // Log.d(TAG, "### getType: " + uri.toString());
-
         switch (URL_MATCHER.match(uri)) {
         case TRAINS:
             return "vnd.android.cursor.dir/vnd.trains.trains";
@@ -124,17 +121,15 @@ public class RenfeTrainProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        // Log.d(TAG, "### URL_MATCHER: " + URL_MATCHER.toString());
-
+        // Log.d(TAG, uri.toString());
+        // Log.d(TAG, String.valueOf(URL_MATCHER.match(uri)));
         try {
-            System.out.println("### insert: " + uri);
-            if (URL_MATCHER.match(uri) == TRAINS) {
-                // Log.d(TAG, "### insert.uri: " + uri);
-                return insertTrain(uri, values);
-            }
-
             if (URL_MATCHER.match(uri) == TIMETABLE) {
                 return insertTimetable(uri, values);
+            }
+
+            if (URL_MATCHER.match(uri) == TRAINS) {
+                return insertTrain(uri, values);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -144,29 +139,7 @@ public class RenfeTrainProvider extends ContentProvider {
         return null;
     }
 
-    private Uri insertTimetable(Uri uri, ContentValues values) throws Exception {
-        try {
-            long rowID = mDB.insert(TBL_TIMETABLE, null, values);
-
-            if (rowID > 0) {
-                uri = ContentUris.withAppendedId(
-                        renfe.trains.provider.Timetable.CONTENT_URI, rowID);
-                getContext().getContentResolver().notifyChange(uri, null);
-                return uri;
-            }
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Couldn't insert new timetable");
-        }
-
-        throw new IllegalArgumentException("Unknown URL " + uri);
-    }
-
     private Uri insertTrain(Uri uri, ContentValues values) throws Exception {
-        String today = sdf.format(new Date());
-        if (!values.containsKey(renfe.trains.provider.Train.DATE)) {
-            values.put(renfe.trains.provider.Train.DATE, today);
-        }
-
         try {
             long rowID = mDB.insert(TBL_TRAIN, null, values);
 
@@ -178,6 +151,28 @@ public class RenfeTrainProvider extends ContentProvider {
             }
         } catch (Exception e) {
             throw new IllegalArgumentException("Couldn't insert new train");
+        }
+
+        throw new IllegalArgumentException("Unknown URL " + uri);
+    }
+
+    private Uri insertTimetable(Uri uri, ContentValues values) throws Exception {
+        String today = sdf.format(new Date());
+        if (!values.containsKey(renfe.trains.provider.Timetable.DATE)) {
+            values.put(renfe.trains.provider.Timetable.DATE, today);
+        }
+
+        try {
+            long rowID = mDB.insert(TBL_TIMETABLE, null, values);
+
+            if (rowID > 0) {
+                uri = ContentUris.withAppendedId(
+                        renfe.trains.provider.Timetable.CONTENT_URI, rowID);
+                getContext().getContentResolver().notifyChange(uri, null);
+                return uri;
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Couldn't insert new timetable");
         }
 
         throw new IllegalArgumentException("Unknown URL " + uri);
@@ -236,7 +231,6 @@ public class RenfeTrainProvider extends ContentProvider {
             return cursor;
         } catch (Exception e) {
             e.printStackTrace();
-            // Log.d(TAG, "### exception.query");
             return null;
         }
     }
@@ -246,7 +240,6 @@ public class RenfeTrainProvider extends ContentProvider {
         String _id;
         int count = 0;
 
-        // Log.d(TAG, "### delete: " + uri.toString());
         switch (URL_MATCHER.match(uri)) {
         case TRAINS:
             count = mDB.delete(TBL_TRAIN, selection, selectionArgs);
@@ -306,24 +299,24 @@ public class RenfeTrainProvider extends ContentProvider {
     static {
         URL_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 
-        URL_MATCHER.addURI(Train.AUTHORITY, "trains", TRAINS);
-        URL_MATCHER.addURI(Train.AUTHORITY, "trains/#", TRAIN_ID);
-        URL_MATCHER.addURI(Timetable.AUTHORITY, "timetables", TIMETABLE);
-        URL_MATCHER.addURI(Timetable.AUTHORITY, "timetables/#", TIMETABLE_ID);
+        URL_MATCHER.addURI(Timetable.AUTHORITY, "trains", TRAINS);
+        URL_MATCHER.addURI(Timetable.AUTHORITY, "trains/#", TRAIN_ID);
+        URL_MATCHER.addURI(Train.AUTHORITY, "timetables", TIMETABLE);
+        URL_MATCHER.addURI(Train.AUTHORITY, "timetables/#", TIMETABLE_ID);
 
         TRAIN_PROJECTION_MAP = new HashMap<String, String>();
         TRAIN_PROJECTION_MAP.put(Train._ID, "_id");
-        TRAIN_PROJECTION_MAP.put(Train.ORIGIN, "origin");
-        TRAIN_PROJECTION_MAP.put(Train.DESTINATION, "destination");
-        TRAIN_PROJECTION_MAP.put(Train.DATE, "date");
+        TRAIN_PROJECTION_MAP.put(Train.ARRIVE, "arrive");
+        TRAIN_PROJECTION_MAP.put(Train.DEPARTURE, "departure");
+        TRAIN_PROJECTION_MAP.put(Train.LENGTH, "length");
+        TRAIN_PROJECTION_MAP.put(Train.CODE, "code");
+        TRAIN_PROJECTION_MAP.put(Train.TIMETABLE_ID, "timetable_id");
 
         TIMETABLE_PROJECTION_MAP = new HashMap<String, String>();
         TIMETABLE_PROJECTION_MAP.put(Timetable._ID, "_id");
-        TIMETABLE_PROJECTION_MAP.put(Timetable.ARRIVE, "arrive");
-        TIMETABLE_PROJECTION_MAP.put(Timetable.DEPARTURE, "departure");
-        TIMETABLE_PROJECTION_MAP.put(Timetable.LENGTH, "length");
-        TIMETABLE_PROJECTION_MAP.put(Timetable.CODE, "code");
-        TIMETABLE_PROJECTION_MAP.put(Timetable.TRAIN_ID, "train_id");
+        TIMETABLE_PROJECTION_MAP.put(Timetable.ORIGIN, "origin");
+        TIMETABLE_PROJECTION_MAP.put(Timetable.DESTINATION, "destination");
+        TIMETABLE_PROJECTION_MAP.put(Timetable.DATE, "date");
     }
 
 }
