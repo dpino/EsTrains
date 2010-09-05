@@ -3,6 +3,7 @@ package renfe.trains.activities;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -67,8 +68,26 @@ public class ListTrainResults extends ListActivity {
 
         // Do query
         List<TrainItem> trains = searchTrains(origin, destination, date);
+        sort(trains);
         adapter = new TrainAdapter(this, trains);
         setListAdapter(adapter);
+    }
+
+    private void sort(List<TrainItem> trains) {
+        Collections.sort(trains, new Comparator<TrainItem>() {
+
+            public int compare(TrainItem trainItem1, TrainItem trainItem2) {
+                if (trainItem1 == null || trainItem1.getDeparture() == null) {
+                    return -1;
+                }
+                if (trainItem2 == null || trainItem2.getDeparture() == null) {
+                    return 1;
+                }
+                return trainItem1.getDeparture().compareTo(
+                        trainItem2.getDeparture());
+            }
+
+        });
     }
 
     private List<TrainItem> searchTrains(String origin, String destination,
