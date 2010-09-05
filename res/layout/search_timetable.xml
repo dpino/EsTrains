@@ -75,6 +75,7 @@
 <AutoCompleteTextView android:id="@+id/acOrigin"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
+	android:text="Vigo"
 	android:width="300px"
     android:singleLine="true"
 	android:textSize="18sp" />
@@ -87,6 +88,7 @@
 <AutoCompleteTextView android:id="@+id/acDestination"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
+    android:text="Ourense"
 	android:width="300px"
 	android:singleLine="true"
     android:textSize="18sp" />

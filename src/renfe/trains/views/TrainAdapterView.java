@@ -1,7 +1,11 @@
 package renfe.trains.views;
 
+import renfe.trains.R;
 import renfe.trains.model.TrainItem;
 import android.content.Context;
+import android.text.Spannable;
+import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,30 +16,40 @@ import android.widget.TextView;
  */
 public class TrainAdapterView extends LinearLayout {
 
-	public TrainAdapterView(Context context, TrainItem train) {
-		super(context);
+    public TrainAdapterView(Context context, TrainItem train) {
+        super(context);
 
-		this.setOrientation(HORIZONTAL);
+        LayoutInflater inflater = (LayoutInflater) getContext()
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.train_row, this);
 
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100,
-				LayoutParams.WRAP_CONTENT);
-		params.setMargins(0, 0, 0, 0);
+        TextView departure = (TextView) findViewById(R.id.tvDeparture);
+        departure.setText(train.getDeparture(), TextView.BufferType.SPANNABLE);
+        setBold(departure);
 
-		TextView tvCode = new TextView(context);
-		tvCode.setText(train.getCode());
-		addView(tvCode, params);
+        TextView arrive = (TextView) findViewById(R.id.tvArrive);
+        arrive.setText(train.getArrive(), TextView.BufferType.SPANNABLE);
+        setBold(arrive);
 
-		TextView tvDeparture = new TextView(context);
-		tvDeparture.setText(train.getDeparture());
-		addView(tvDeparture, params);
+        TextView length = (TextView) findViewById(R.id.tvLength);
+        length.setText(train.getLength());
 
-		TextView tvArrive = new TextView(context);
-		tvArrive.setText(train.getArrive());
-		addView(tvArrive, params);
+        TextView code = (TextView) findViewById(R.id.tvCode);
+        code.setText(getTrainModel(train.getCode()));
+    }
 
-		TextView tvLength = new TextView(context);
-		tvLength.setText(train.getLength());
-		addView(tvLength, params);
-	}
+    private String getTrainModel(String code) {
+        int pos = code.indexOf(" ");
+        if (pos >= 0) {
+            return code.substring(pos, code.length());
+        }
+        return code;
+    }
+
+    private void setBold(TextView tv) {
+        Spannable str = (Spannable) tv.getText();
+        str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0,
+                str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+    }
 
 }

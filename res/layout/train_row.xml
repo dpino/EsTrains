@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF00FF00"
+    >
+
+    <TextView android:id="@+id/tvDeparture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="departure"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        />
+
+    <TextView android:id="@+id/tvArrive"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="origin"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        />
+
+    <TextView android:id="@+id/tvLength"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="length"
+        android:layout_weight="1"
+        />
+
+    <TextView android:id="@+id/tvCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="code"
+        android:layout_weight="1"
+        />
+
+</merge>
