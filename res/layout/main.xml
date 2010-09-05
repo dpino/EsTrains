@@ -5,14 +5,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <ListView android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:drawSelectorOnTop="false"/>
+	<TextView android:id="@+id/route" android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:singleLine="true"
+		android:ellipsize="end" android:paddingLeft="0px" android:textStyle="bold"
+		android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView android:id="@+id/phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+	<ListView android:id="@android:id/list" android:layout_width="match_parent"
+		android:layout_height="0dip" android:layout_weight="1"
+		android:drawSelectorOnTop="false" />
 
 </LinearLayout>

@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 public class ListTrainResults extends ListActivity {
 
@@ -59,6 +60,10 @@ public class ListTrainResults extends ListActivity {
         String origin = (String) parameters.get("origin");
         String destination = (String) parameters.get("destination");
         Date date = (Date) parameters.get("date");
+
+        // Set route
+        TextView tvRoute = (TextView) findViewById(renfe.trains.R.id.route);
+        tvRoute.setText(origin + " - " + destination);
 
         // Do query
         List<TrainItem> trains = searchTrains(origin, destination, date);
