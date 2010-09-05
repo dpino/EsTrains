@@ -1,13 +1,13 @@
-package renfe.trains.views;
+package es.trains.views;
 
-import renfe.trains.R;
-import renfe.trains.model.TrainItem;
 import android.content.Context;
 import android.text.Spannable;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import es.trains.R;
+import es.trains.model.TrainItem;
 
 /**
  *

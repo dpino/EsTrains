@@ -1,4 +1,4 @@
-package renfe.trains.provider;
+package es.trains.provider;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,14 +21,14 @@ import android.text.TextUtils;
  * @author Diego Pino <dpino@igalia.com>
  *
  */
-public class RenfeTrainProvider extends ContentProvider {
+public class EsTrainProvider extends ContentProvider {
 
-    public static final String TAG = "RenfeTrainProvider";
+    public static final String TAG = "EsTrainProvider";
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat(
             "dd-MM-yyyy");
 
-    private static final String DATABASE_NAME = "renfe-trains.db";
+    private static final String DATABASE_NAME = "es-trains.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TBL_TRAIN = "Train";
@@ -145,7 +145,7 @@ public class RenfeTrainProvider extends ContentProvider {
 
             if (rowID > 0) {
                 uri = ContentUris.withAppendedId(
-                        renfe.trains.provider.Train.CONTENT_URI, rowID);
+                        es.trains.provider.Train.CONTENT_URI, rowID);
                 getContext().getContentResolver().notifyChange(uri, null);
                 return uri;
             }
@@ -158,8 +158,8 @@ public class RenfeTrainProvider extends ContentProvider {
 
     private Uri insertTimetable(Uri uri, ContentValues values) throws Exception {
         String today = sdf.format(new Date());
-        if (!values.containsKey(renfe.trains.provider.Timetable.DATE)) {
-            values.put(renfe.trains.provider.Timetable.DATE, today);
+        if (!values.containsKey(es.trains.provider.Timetable.DATE)) {
+            values.put(es.trains.provider.Timetable.DATE, today);
         }
 
         try {
@@ -167,7 +167,7 @@ public class RenfeTrainProvider extends ContentProvider {
 
             if (rowID > 0) {
                 uri = ContentUris.withAppendedId(
-                        renfe.trains.provider.Timetable.CONTENT_URI, rowID);
+                        es.trains.provider.Timetable.CONTENT_URI, rowID);
                 getContext().getContentResolver().notifyChange(uri, null);
                 return uri;
             }
@@ -191,7 +191,7 @@ public class RenfeTrainProvider extends ContentProvider {
             qb.setTables(TBL_TRAIN);
             qb.setProjectionMap(TRAIN_PROJECTION_MAP);
             if (sort == null) {
-                sort = renfe.trains.provider.Train.DEFAULT_ORDER;
+                sort = es.trains.provider.Train.DEFAULT_ORDER;
             }
             break;
         case TRAIN_ID:
@@ -200,14 +200,14 @@ public class RenfeTrainProvider extends ContentProvider {
             selection = (TextUtils.isEmpty(selection)) ? "_id=" + _id : "_id="
                     + _id + " AND " + selection;
             if (sort == null) {
-                sort = renfe.trains.provider.Train.DEFAULT_ORDER;
+                sort = es.trains.provider.Train.DEFAULT_ORDER;
             }
             break;
         case TIMETABLE:
             qb.setTables(TBL_TIMETABLE);
             qb.setProjectionMap(TIMETABLE_PROJECTION_MAP);
             if (sort == null) {
-                sort = renfe.trains.provider.Timetable.DEFAULT_ORDER;
+                sort = es.trains.provider.Timetable.DEFAULT_ORDER;
             }
             break;
         case TIMETABLE_ID:
@@ -216,7 +216,7 @@ public class RenfeTrainProvider extends ContentProvider {
             selection = (TextUtils.isEmpty(selection)) ? "_id=" + _id : "_id="
                     + _id + " AND " + selection;
             if (sort == null) {
-                sort = renfe.trains.provider.Timetable.DEFAULT_ORDER;
+                sort = es.trains.provider.Timetable.DEFAULT_ORDER;
             }
             break;
         default:

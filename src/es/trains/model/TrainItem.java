@@ -1,4 +1,4 @@
-package renfe.trains.model;
+package es.trains.model;
 
 import android.database.Cursor;
 

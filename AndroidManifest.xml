@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="renfe.trains"
+      package="es.trains"
       android:versionCode="1"
       android:versionName="1.0">
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
 
-		<provider android:name=".provider.RenfeTrainProvider"
-		  android:authorities="renfe.trains.provider" />
+		<provider android:name=".provider.EsTrainProvider"
+		  android:authorities="es.trains.provider" />
 
 		<!-- Main activity -->
 		<activity android:name=".activities.SearchTimetable" android:label="@string/app_name">
@@ -25,8 +25,6 @@
         </activity>
 
     </application>
-
-
 
     <uses-sdk android:minSdkVersion="8" />
 

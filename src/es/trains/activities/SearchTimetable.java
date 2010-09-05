@@ -1,10 +1,9 @@
-package renfe.trains.activities;
+package es.trains.activities;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import renfe.trains.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import es.trains.R;
 
 public class SearchTimetable extends Activity {
 

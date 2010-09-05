@@ -1,4 +1,4 @@
-package renfe.trains.activities;
+package es.trains.activities;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,12 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import renfe.trains.R;
-import renfe.trains.model.TrainItem;
-import renfe.trains.provider.Timetable;
-import renfe.trains.provider.Train;
-import renfe.trains.services.RenfeXHR;
-import renfe.trains.views.TrainAdapterView;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.ContentValues;
@@ -32,14 +26,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import es.trains.R;
+import es.trains.model.TrainItem;
+import es.trains.provider.Timetable;
+import es.trains.provider.Train;
+import es.trains.services.EsTrainXHR;
+import es.trains.views.TrainAdapterView;
 
 public class ListTrainResults extends ListActivity {
 
     private static final String TAG = "ListTrainResults";
 
-    private static final Uri TIMETABLE_URI = renfe.trains.provider.Timetable.CONTENT_URI;
+    private static final Uri TIMETABLE_URI = es.trains.provider.Timetable.CONTENT_URI;
 
-    private static final Uri TRAIN_URI = renfe.trains.provider.Train.CONTENT_URI;
+    private static final Uri TRAIN_URI = es.trains.provider.Train.CONTENT_URI;
 
     private final SimpleDateFormat iso8601DateFormat = new SimpleDateFormat(
             "yyyy-MM-dd");
@@ -63,7 +63,7 @@ public class ListTrainResults extends ListActivity {
         Date date = (Date) parameters.get("date");
 
         // Set route
-        TextView tvRoute = (TextView) findViewById(renfe.trains.R.id.route);
+        TextView tvRoute = (TextView) findViewById(R.id.route);
         tvRoute.setText(origin + " - " + destination);
 
         // Do query
@@ -94,7 +94,7 @@ public class ListTrainResults extends ListActivity {
             Date date) {
         List<TrainItem> result = new ArrayList<TrainItem>();
 
-        renfe.trains.model.Timetable timetable = new renfe.trains.model.Timetable(
+        es.trains.model.Timetable timetable = new es.trains.model.Timetable(
                 origin, destination, date);
         result = cache.searchTrains(this, origin, destination, date);
         if (result.isEmpty()) {
@@ -107,7 +107,7 @@ public class ListTrainResults extends ListActivity {
     private List<TrainItem> searchTrainsXHR(String origin, String destination,
             Date date) {
 
-        RenfeXHR xhr = new RenfeXHR();
+        EsTrainXHR xhr = new EsTrainXHR();
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("origin", origin);
@@ -271,15 +271,14 @@ public class ListTrainResults extends ListActivity {
         }
 
         private void save(Activity activity,
-                renfe.trains.model.Timetable timetable, List<TrainItem> trains) {
+                es.trains.model.Timetable timetable, List<TrainItem> trains) {
             save(activity, timetable);
             for (TrainItem each : trains) {
                 save(activity, timetable, each);
             }
         }
 
-        private void save(Activity activity,
-                renfe.trains.model.Timetable timetable) {
+        private void save(Activity activity, es.trains.model.Timetable timetable) {
             ContentValues values = new ContentValues();
 
             values.put(Timetable.ORIGIN, timetable.getOrigin());
@@ -299,7 +298,7 @@ public class ListTrainResults extends ListActivity {
         }
 
         private void save(Activity activity,
-                renfe.trains.model.Timetable timetable, TrainItem trainItem) {
+                es.trains.model.Timetable timetable, TrainItem trainItem) {
             ContentValues values = new ContentValues();
 
             values.put(Train.CODE, trainItem.getCode());

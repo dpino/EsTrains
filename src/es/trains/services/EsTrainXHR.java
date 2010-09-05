@@ -1,4 +1,4 @@
-package renfe.trains.services;
+package es.trains.services;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,9 +17,9 @@ import org.apache.commons.io.IOUtils;
  * @author Diego Pino <dpino@igalia.com>
  *
  */
-public class RenfeXHR {
+public class EsTrainXHR {
 
-    private static final String TAG = "RenfeXHR";
+    private static final String TAG = "EsTrainXHR";
 
     private static final String BASE_URL = "http://pinowsky.appspot.com/trains";
 
@@ -27,7 +27,7 @@ public class RenfeXHR {
 
     private String responseAsString;
 
-    public RenfeXHR() {
+    public EsTrainXHR() {
 
     }
 
