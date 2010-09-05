@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Renfe trains</string>
-	<string name="app_name">Renfe trains</string>
+    <string name="app_name">Trenes</string>
+    <string name="date">Fecha</string>
+    <string name="today">Hoy</string>
+    <string name="tomorrow">Mañana</string>
+    <string name="dayAfterTomorrow">Pasado</string>
+    <string name="origin">Origen</string>
+    <string name="destination">Destino</string>
+    <string name="search_timetable">Consultar horarios</string>
+    <string name="msg_error_select_origin">Por favor, seleccione un origen</string>
+    <string name="msg_error_select_destination">Por favor, seleccione un destino</string>
 
-	<!-- Train stations -->
+    <!-- Train stations -->
     <string-array name="train_stations">
         <item>A Coruña</item>
         <item>La Coruña</item>

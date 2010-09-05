@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
 <TextView android:id="@+id/txtDate" android:layout_width="wrap_content"
-	android:layout_height="wrap_content" android:text="Fecha" />
+	android:layout_height="wrap_content" android:text="@string/date" />
 
 <LinearLayout android:orientation="vertical"
 	android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -19,17 +19,17 @@
 		<!-- Button today -->
 		<Button android:id="@+id/btnToday" android:onClick="today"
 			android:layout_height="wrap_content" android:layout_width="wrap_content"
-			android:width="105px" android:text="Hoy" />
+			android:width="105px" android:text="@string/today" />
 
 		<!-- Button tomorrow -->
 		<Button android:id="@+id/btnTomorrow" android:onClick="tomorrow"
 			android:layout_height="wrap_content" android:layout_width="wrap_content"
-			android:width="105px" android:text="Mañana" />
+			android:width="105px" android:text="@string/tomorrow" />
 
 		<!-- Button day after tomorrow -->
-		<Button android:id="@+id/widget34" android:onClick="dayAfterTomorrow"
+		<Button android:id="@+id/btnDayAfterTomorrow" android:onClick="dayAfterTomorrow"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:width="105px" android:text="Pasado" />
+			android:width="105px" android:text="@string/dayAfterTomorrow" />
 
 	</LinearLayout>
 
@@ -70,12 +70,12 @@
 <TextView android:id="@+id/txtOrigin"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:text="Origen" />
+	android:text="@string/origin" />
 
 <AutoCompleteTextView android:id="@+id/acOrigin"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:text="Vigo"
+	android:text=""
 	android:width="300px"
     android:singleLine="true"
 	android:textSize="18sp" />
@@ -83,12 +83,12 @@
 <TextView android:id="@+id/txtDestination"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:text="Destino" />
+	android:text="@string/destination" />
 
 <AutoCompleteTextView android:id="@+id/acDestination"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-    android:text="Ourense"
+    android:text=""
 	android:width="300px"
 	android:singleLine="true"
     android:textSize="18sp" />
@@ -98,7 +98,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:onClick="searchTrains"
-    android:text="Consultar horarios"
+    android:text="@string/search_timetable"
     android:gravity="center_horizontal"
     android:layout_gravity="center_horizontal" />
 

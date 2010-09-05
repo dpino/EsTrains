@@ -132,12 +132,14 @@ public class SearchTimetable extends Activity {
         String destination = acDestination.getText().toString();
 
         if (origin.length() == 0) {
-            acOrigin.setError("Por favor, seleccione un origen");
+            acOrigin.setError(getResources().getString(
+                    R.string.msg_error_select_origin));
             return;
         }
 
         if (destination.length() == 0) {
-            acDestination.setError("Por favor, seleccione un destino");
+            acOrigin.setError(getResources().getString(
+                    R.string.msg_error_select_destination));
             return;
         }
 
